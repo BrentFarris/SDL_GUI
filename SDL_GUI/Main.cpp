@@ -49,7 +49,7 @@ int main(int argc, char* args[])
 	SDL_WM_SetCaption("SDL_GUI", NULL);
 
 	// Open the font
-	font = TTF_OpenFont("Fonts/arial.ttf", 28);
+	font = TTF_OpenFont("Fonts/PTC55F.ttf", 28);
 
 	if (font == NULL)
 		return 1;
