@@ -1,5 +1,6 @@
 #include "SDL.h"
-#include "SDL_image.h"
+#include "SDL_TTF.h"
+
 #include <string>
 #include "ImageManager.h"
 #include "InputManager.h"
@@ -22,6 +23,8 @@ void MouseDown();
 void MouseUp();
 void MouseClick();
 
+TTF_Font *font = NULL;
+
 int main(int argc, char* args[])
 {
 	ImageManager imageManager = ImageManager();
@@ -31,7 +34,7 @@ int main(int argc, char* args[])
 	bool quit = false;
 
 	// Start SDL
-	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
+	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		return 1;
 
 	// Set up screen
@@ -40,18 +43,27 @@ int main(int argc, char* args[])
 	if (screen == NULL)
 		return 1;
 
+	if(TTF_Init() == -1)
+		return 1;
+
 	SDL_WM_SetCaption("SDL_GUI", NULL);
+
+	// Open the font
+	font = TTF_OpenFont("Fonts/arial.ttf", 28);
+
+	if (font == NULL)
+		return 1;
 
 	// Load the images
 	if (imageManager.AddImage("hello", "BeardedManStudios.bmp"))
 	{
-		Image* tmpHello = imageManager.GetBaseImage("hello");
-		tmpHello->rect.x = (inputManager.GetScreenWidth() * 0.5f) - (tmpHello->image->w * 0.5f);
-		tmpHello->rect.y = (inputManager.GetScreenHeight() * 0.5f) - (tmpHello->image->h * 0.5f);
+		Image* tmp = imageManager.GetBaseImage("hello");
+		tmp->rect.x = (inputManager.GetScreenWidth() * 0.5f) - (tmp->image->w * 0.5f);
+		tmp->rect.y = (inputManager.GetScreenHeight() * 0.5f) - (tmp->image->h * 0.5f);
 	}
 
 	// Create a button and its events
-	SDL_GUI::SDL_GUI_Button button = SDL_GUI::SDL_GUI_Button(screen, &inputManager, "Hello Danielle");
+	SDL_GUI::Button button = SDL_GUI::Button(screen, &inputManager, "Hello Danielle");
 	button.rect = Rectangle(0, 0, 100, 100);
 	button.SetMouseOver(&MouseOver);
 	button.SetMouseOut(&MouseOut);
@@ -59,11 +71,15 @@ int main(int argc, char* args[])
 	button.SetMouseUp(&MouseUp);
 	button.SetOnClick(&MouseClick);
 
+	SDL_GUI::TextBlock textBlock = SDL_GUI::TextBlock(screen, &inputManager, font, "The quick brown fox jumps over the lazy dog");
+	textBlock.rect = Rectangle(300, 25, 15, 15);
+
 	while (!quit)
 	{
 		inputManager.Update(screen, &quit);
 
 		button.Update();
+		textBlock.Update();
 
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 
@@ -71,13 +87,18 @@ int main(int argc, char* args[])
 		tmpHello->rect.x = (inputManager.GetScreenWidth() * 0.5f) - (tmpHello->image->w * 0.5f);
 		tmpHello->rect.y = (inputManager.GetScreenHeight() * 0.5f) - (tmpHello->image->h * 0.5f);
 
-		imageManager.DrawImage("hello", screen);
+		imageManager.DrawAllImages(screen);
 		
 		button.Draw(screen);
+		textBlock.Draw(screen);
 
 		if (SDL_Flip(screen) == -1)
 			return 1;
 	}
+
+	// Quit TTF
+	TTF_CloseFont(font);
+	TTF_Quit();
 
 	// Quit SDL
 	SDL_Quit();

@@ -33,14 +33,17 @@
     <ClCompile Include="Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SDL_GUI_Button.cpp">
-      <Filter>Source Files\SDL_GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="SLD_GUI_Element.cpp">
-      <Filter>Source Files\SDL_GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\SDL_GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI_Element.cpp">
+      <Filter>Source Files\SDL_GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBlock.cpp">
+      <Filter>Source Files\SDL_GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,17 +56,20 @@
     <ClInclude Include="Rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SDL_GUI_Button.h">
-      <Filter>Header Files\SDL_GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="SDL_GUI_Element.h">
-      <Filter>Header Files\SDL_GUI</Filter>
-    </ClInclude>
     <ClInclude Include="SDL_GUI.h">
       <Filter>Header Files\SDL_GUI</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBlock.h">
+      <Filter>Header Files\SDL_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\SDL_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI_Element.h">
+      <Filter>Header Files\SDL_GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

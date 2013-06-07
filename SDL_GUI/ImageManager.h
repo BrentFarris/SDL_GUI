@@ -43,10 +43,12 @@ class ImageManager
 		ImageManager();
 		
 		bool AddImage(string imageKey, string imagePath);
+		bool AddImage(string imageKey, SDL_Surface* img);
 		Image* GetBaseImage(string imageKey) { return &images[imageKey]; }
 		SDL_Surface* GetImage(string imageKey) { return images[imageKey].image; }
 		SDL_Surface* LoadImage(std::string filename);
 		void DrawImage(string imageKey, SDL_Surface* destination);
+		void DrawAllImages(SDL_Surface* destination);
 
 		// Free the images from the map
 		~ImageManager()

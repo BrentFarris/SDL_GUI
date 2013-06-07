@@ -7,10 +7,24 @@ ImageManager::ImageManager()
 
 bool ImageManager::AddImage(string imageKey, string imagePath)
 {
-	images[imageKey].image = LoadImage(imagePath);
+	SDL_Surface* tmpImg = LoadImage(imagePath);
 
-	if (images[imageKey].image != NULL)
+	if (tmpImg != NULL)
+	{
+		images[imageKey].image = tmpImg;
 		return true;
+	}
+
+	return false;
+}
+
+bool ImageManager::AddImage(string imageKey, SDL_Surface* img)
+{
+	if (img != NULL)
+	{
+		images[imageKey].image = img;
+		return true;
+	}
 
 	return false;
 }
@@ -52,4 +66,10 @@ void ImageManager::DrawImage(string imageKey, SDL_Surface* destination)
 {
 	// Blit the surface
 	SDL_BlitSurface(images[imageKey].image, NULL, destination, &images[imageKey].rect.SDL_Format());
+}
+
+void ImageManager::DrawAllImages(SDL_Surface* destination)
+{
+	for (map<string, Image>::iterator image = images.begin(); image != images.end(); ++image)
+		DrawImage((*image).first, destination);
 }

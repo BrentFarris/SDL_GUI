@@ -16,4 +16,5 @@
 
 #pragma once
 
-#include "SDL_GUI_Button.h"
+#include "Button.h"
+#include "TextBlock.h"
