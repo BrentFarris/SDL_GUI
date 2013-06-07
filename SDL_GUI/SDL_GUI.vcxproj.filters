@@ -45,6 +45,9 @@
     <ClCompile Include="TextBlock.cpp">
       <Filter>Source Files\SDL_GUI</Filter>
     </ClCompile>
+    <ClCompile Include="GUI_Element_Manager.cpp">
+      <Filter>Source Files\SDL_GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageManager.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files\SDL_GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUI_Element.h">
+      <Filter>Header Files\SDL_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI_Element_Manager.h">
       <Filter>Header Files\SDL_GUI</Filter>
     </ClInclude>
   </ItemGroup>

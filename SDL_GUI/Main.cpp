@@ -29,6 +29,7 @@ int main(int argc, char* args[])
 {
 	ImageManager imageManager = ImageManager();
 	InputManager inputManager = InputManager(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP);
+	SDL_GUI::GUI_Element_Manager elementManager =  SDL_GUI::GUI_Element_Manager();
 
 	// Make sure that the program waits for quit
 	bool quit = false;
@@ -71,15 +72,18 @@ int main(int argc, char* args[])
 	button.SetMouseUp(&MouseUp);
 	button.SetOnClick(&MouseClick);
 
+	elementManager.AddElement(&button);
+
 	SDL_GUI::TextBlock textBlock = SDL_GUI::TextBlock(screen, &inputManager, font, "The quick brown fox jumps over the lazy dog");
 	textBlock.rect = Rectangle(300, 25, 15, 15);
+
+	elementManager.AddElement(&textBlock);
 
 	while (!quit)
 	{
 		inputManager.Update(screen, &quit);
 
-		button.Update();
-		textBlock.Update();
+		elementManager.UpdateElements();
 
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 
@@ -89,8 +93,7 @@ int main(int argc, char* args[])
 
 		imageManager.DrawAllImages(screen);
 		
-		button.Draw(screen);
-		textBlock.Draw(screen);
+		elementManager.DrawElements(screen);
 
 		if (SDL_Flip(screen) == -1)
 			return 1;
