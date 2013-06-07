@@ -24,6 +24,11 @@ bool Rectangle::Contains(int x, int y)
 		return false;
 }
 
+bool Rectangle::Contains(Vector2 position)
+{
+	return Contains(position.x, position.y);
+}
+
 bool Rectangle::Intersects(Rectangle inRect)
 {
 	if (this->Contains(inRect.x, inRect.y) || this->Contains(inRect.x + inRect.width, inRect.y) ||

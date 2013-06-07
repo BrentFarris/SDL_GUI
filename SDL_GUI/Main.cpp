@@ -14,6 +14,7 @@ const int SCREEN_BPP	= 32;
 // The images
 SDL_Surface* screen = NULL;
 
+// Functions to test the button events
 void ChangeName(string txt);
 void MouseOver();
 void MouseOut();
@@ -49,6 +50,7 @@ int main(int argc, char* args[])
 		tmpHello->rect.y = (inputManager.GetScreenHeight() * 0.5f) - (tmpHello->image->h * 0.5f);
 	}
 
+	// Create a button and its events
 	SDL_GUI::SDL_GUI_Button button = SDL_GUI::SDL_GUI_Button(screen, &inputManager, "Hello Danielle");
 	button.rect = Rectangle(0, 0, 100, 100);
 	button.SetMouseOver(&MouseOver);
@@ -83,6 +85,7 @@ int main(int argc, char* args[])
 	return 0;
 }
 
+// These are tests to make sure that the button events are working.
 void ChangeName(string txt) { SDL_WM_SetCaption((string("SDL_GUI: ") + txt).c_str(), NULL); }
 void MouseOver() { ChangeName("Mouse Over"); }
 void MouseOut() { ChangeName("Mouse Out"); }

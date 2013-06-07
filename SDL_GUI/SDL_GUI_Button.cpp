@@ -10,7 +10,9 @@ SDL_GUI::SDL_GUI_Button::SDL_GUI_Button(SDL_Surface* screen, InputManager* passe
 	text = txt;
 }
 
+/*
 void SDL_GUI::SDL_GUI_Button::Update()
 {
 	SDL_GUI::SDL_GUI_Element::Update();
 }
+*/

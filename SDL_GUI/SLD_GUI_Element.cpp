@@ -18,7 +18,7 @@ SDL_GUI::SDL_GUI_Element::SDL_GUI_Element(SDL_Surface* screen, InputManager* pas
 
 void SDL_GUI::SDL_GUI_Element::Update()
 {
-	bool inRect = rect.Contains(inputManager->GetMouseX(), inputManager->GetMouseY());
+	bool inRect = rect.Contains(inputManager->GetMousePosition());
 
 	if (!mouseIsOver && inRect)
 	{

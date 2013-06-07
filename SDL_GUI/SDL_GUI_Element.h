@@ -1,3 +1,15 @@
+/////////////////////////////////////////////////
+//                                             //
+// Brent Farris, Bearded Man Studios, Inc.     //
+// https://www.beardedmangames.com/            //
+//                                             //
+/////////////////////////////////////////////////
+//                                             //
+// This is the mian parent class for all of    //
+// GUI elements to be made.                    //
+//                                             //
+/////////////////////////////////////////////////
+
 #ifndef SDL_GUI_ELEMENT_H
 #define SDL_GUI_ELEMENT_H
 #endif
@@ -18,11 +30,11 @@ namespace SDL_GUI
 			Uint32 backgroundColor;
 
 		protected:
-			void (*onMouseUp)(void);
-			void (*onMouseDown)(void);
-			void (*onMouseOver)(void);
-			void (*onMouseOut)(void);
-			void (*onClick)(void);
+			void (*onMouseUp)(void);		// The mouse up callback
+			void (*onMouseDown)(void);		// The mouse down callback
+			void (*onMouseOver)(void);		// The mouse over callback
+			void (*onMouseOut)(void);		// The mouse out callback
+			void (*onClick)(void);			// The click callback
 
 		public:
 			Rectangle rect;

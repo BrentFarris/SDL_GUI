@@ -2,8 +2,7 @@
 
 InputManager::InputManager(int screenSizeX, int screenSizeY, int bppScreen)
 {
-	mouseX					= 0;
-	mouseY					= 0;
+	mousePosition			= Vector2(0, 0);
 
 	mouseInitialClick		= false;
 	mouseInitialRelease		= false;
@@ -38,8 +37,8 @@ void InputManager::Update(SDL_Surface* screen, bool* quit)
 				break;
 			case SDL_MOUSEMOTION:								// If the mouse was moved
 				// Get the mouse offsets
-				mouseX = event.motion.x;
-				mouseY = event.motion.y;
+				mousePosition.x = event.motion.x;
+				mousePosition.y = event.motion.y;
 				break;
 			case SDL_MOUSEBUTTONDOWN:							// If the mouse button was clicked
 				// If it was the left mouse button
@@ -47,8 +46,8 @@ void InputManager::Update(SDL_Surface* screen, bool* quit)
 				{
 					mouseInitialClick = true;
 
-					mouseX = event.button.x;
-					mouseY = event.button.y;
+					mousePosition.x = event.button.x;
+					mousePosition.y = event.button.y;
 				}
 				break;
 			case SDL_MOUSEBUTTONUP:								// If the mouse button was released
@@ -57,8 +56,8 @@ void InputManager::Update(SDL_Surface* screen, bool* quit)
 				{
 					mouseInitialRelease = true;
 
-					mouseX = event.button.x;
-					mouseY = event.button.y;
+					mousePosition.x = event.button.x;
+					mousePosition.y = event.button.y;
 				}
 				break;
 			case SDL_VIDEORESIZE:

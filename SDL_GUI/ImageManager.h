@@ -1,3 +1,16 @@
+/////////////////////////////////////////////////
+//                                             //
+// Brent Farris, Bearded Man Studios, Inc.     //
+// https://www.beardedmangames.com/            //
+//                                             //
+/////////////////////////////////////////////////
+//                                             //
+// This input manager is used to keep track    //
+// of the input events and should be expanded  //
+// to support any range of inputs.             //
+//                                             //
+/////////////////////////////////////////////////
+
 #ifndef IMAGE_MANAGER_H
 #define IMAGE_MANAGER_H
 #endif
@@ -24,7 +37,7 @@ class Image
 class ImageManager
 {
 	private:
-		map<string, Image> images;
+		map<string, Image> images;			// A key value map to get images by key name
 
 	public:
 		ImageManager();
@@ -35,6 +48,7 @@ class ImageManager
 		SDL_Surface* LoadImage(std::string filename);
 		void DrawImage(string imageKey, SDL_Surface* destination);
 
+		// Free the images from the map
 		~ImageManager()
 		{
 			for (map<string, Image>::iterator image = images.begin(); image != images.end(); ++image)
