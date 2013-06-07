@@ -50,7 +50,7 @@ int main(int argc, char* args[])
 	SDL_WM_SetCaption("SDL_GUI", NULL);
 
 	// Open the font
-	font = TTF_OpenFont("Fonts/PTC55F.ttf", 28);
+	font = TTF_OpenFont("Fonts/PTC55F.ttf", 18);
 
 	if (font == NULL)
 		return 1;
@@ -64,8 +64,8 @@ int main(int argc, char* args[])
 	}
 
 	// Create a button and its events
-	SDL_GUI::Button button = SDL_GUI::Button(screen, &inputManager, "Hello Danielle");
-	button.rect = Rectangle(0, 0, 100, 100);
+	SDL_GUI::Button button = SDL_GUI::Button(screen, &inputManager, font, "Button!");
+	button.rect = Rectangle(15, 15, 150, 50);
 	button.SetMouseOver(&MouseOver);
 	button.SetMouseOut(&MouseOut);
 	button.SetMouseDown(&MouseDown);

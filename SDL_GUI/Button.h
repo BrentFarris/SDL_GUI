@@ -17,20 +17,23 @@
 #pragma once
 
 #include "GUI_Element.h"
+#include "TextBlock.h"
 #include <string>
 
 namespace SDL_GUI
 {
 	class Button : public GUI_Element
-	{protected:
+	{
+		protected:
+			TextBlock textBlock;
 			string text;			// Will be used to  have text on button
+			Rectangle lastRect;
 
 		public:
-			Button(SDL_Surface* screen, InputManager* passedInputManager);					// Initializes button with text as "button"
-			Button(SDL_Surface* screen, InputManager* passedInputManager, string txt);		// Initialize the button with text
+			Button(SDL_Surface* screen, InputManager* passedInputManager, TTF_Font* pfont);					// Initializes button with text as "button"
+			Button(SDL_Surface* screen, InputManager* passedInputManager, TTF_Font* pfont, string txt);		// Initialize the button with text
 
-			// If needed to overridee
-			// void Update();
+			void Update();
 			void Draw(SDL_Surface* screen);
 
 			~Button() { }

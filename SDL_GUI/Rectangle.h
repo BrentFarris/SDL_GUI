@@ -36,6 +36,10 @@ class Rectangle
 		bool Contains(Vector2 position);				// Breaks the vector2 down to x and y and passes it into the other Contains function
 		bool Intersects(Rectangle inRect);				// Checks to see if another rectangle is intersecting this one
 		SDL_Rect SDL_Format();							// Turns this rect into a SDL format rect
+		void Center(Rectangle inRect);					// Center this rectangle on another rectangle
+
+		bool operator==(const Rectangle& other);
+		bool operator!=(const Rectangle& other);
 
 		~Rectangle()
 		{

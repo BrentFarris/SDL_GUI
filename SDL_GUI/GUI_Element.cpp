@@ -1,5 +1,10 @@
 #include "GUI_Element.h"
 
+SDL_GUI::GUI_Element::GUI_Element()
+{
+
+}
+
 SDL_GUI::GUI_Element::GUI_Element(SDL_Surface* screen, InputManager* passedInputManager)
 {
 	mouseIsOver		= false;

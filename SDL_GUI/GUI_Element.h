@@ -43,6 +43,7 @@ namespace SDL_GUI
 			Rectangle rect;
 			InputManager* inputManager;
 
+			GUI_Element();
 			GUI_Element(SDL_Surface* screen, InputManager* passedInputManager);
 
 			void SetOnClick(void (*callback)(void))		{ onClick		= callback; }

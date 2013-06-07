@@ -55,3 +55,12 @@ SDL_Rect Rectangle::SDL_Format()
 
 	return tmp;
 }
+
+void Rectangle::Center(Rectangle inRect)
+{
+	x = (inRect.x + (inRect.width * 0.5f)) - (width * 0.5f);
+	y = (inRect.y + (inRect.height * 0.5f)) - (height * 0.5f);
+}
+
+bool Rectangle::operator==(const Rectangle&  other) { return this->x == other.x && this->y == other.y && this->width == other.width && this->height == other.height; }
+bool Rectangle::operator!=(const Rectangle&  other) { return this->x != other.x && this->y != other.y && this->width != other.width && this->height != other.height; }

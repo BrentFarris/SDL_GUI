@@ -41,3 +41,5 @@ Vector2 Vector2::operator+(const Vector2&  other) { return Vector2(this->x + oth
 Vector2 Vector2::operator-(const Vector2&  other) { return Vector2(this->x - other.x, this->y - other.y); }
 Vector2 Vector2::operator*(const Vector2&  other) { return Vector2(this->x * other.x, this->y * other.y); }
 Vector2 Vector2::operator/(const Vector2&  other) { return Vector2(this->x / other.x, this->y / other.y); }
+bool Vector2::operator==(const Vector2&  other) { return this->x == other.x && this->y == other.y; }
+bool Vector2::operator!=(const Vector2&  other) { return this->x != other.x && this->y != other.y; }

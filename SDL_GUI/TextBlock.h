@@ -22,11 +22,15 @@ namespace SDL_GUI
 			string text;
 			TTF_Font* font;
 			
+			TextBlock();		// Requires default constructor for Button class to use it
+
 			TextBlock(SDL_Surface* screen, InputManager* passedInputManager, TTF_Font* pfont);
 			TextBlock(SDL_Surface* screen, InputManager* passedInputManager, TTF_Font* pfont, string txt);
 
 			void Draw(SDL_Surface* screen);
 			void ChangeText(string newText);			// This allows for the text to be changed and updated
+			void SetColor(int r, int g, int b);
+			void SetColor(int grayscale);
 
 			~TextBlock() { }
 	};

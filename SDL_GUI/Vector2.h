@@ -34,6 +34,8 @@ class Vector2
 		Vector2 operator-(const Vector2& other);	// Subtract this x to the incoming x and subtract this y to the incoming y
 		Vector2 operator*(const Vector2& other);	// Multiply this x to the incoming x and multiply this y to the incoming y
 		Vector2 operator/(const Vector2& other);	// Divide this x to the incoming x and divide this y to the incoming y
+		bool operator==(const Vector2& other);
+		bool operator!=(const Vector2& other);
 
 		~Vector2() { }
 };
