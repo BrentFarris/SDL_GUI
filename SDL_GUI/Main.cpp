@@ -14,6 +14,7 @@ const int SCREEN_BPP	= 32;
 // The images
 SDL_Surface* screen = NULL;
 
+void ChangeName(string txt);
 void MouseOver();
 void MouseOut();
 void MouseDown();
@@ -38,7 +39,7 @@ int main(int argc, char* args[])
 	if (screen == NULL)
 		return 1;
 
-	SDL_WM_SetCaption("Five", NULL);
+	SDL_WM_SetCaption("SDL_GUI", NULL);
 
 	// Load the images
 	if (imageManager.AddImage("hello", "BeardedManStudios.bmp"))
@@ -82,27 +83,9 @@ int main(int argc, char* args[])
 	return 0;
 }
 
-void MouseOver()
-{
-	SDL_WM_SetCaption("Five Mouse Over", NULL);
-}
-
-void MouseOut()
-{
-	SDL_WM_SetCaption("Five Mouse Out", NULL);
-}
-
-void MouseDown()
-{
-	SDL_WM_SetCaption("Five Mouse Down", NULL);
-}
-
-void MouseUp()
-{
-	SDL_WM_SetCaption("Five Mouse Up", NULL);
-}
-
-void MouseClick()
-{
-	SDL_WM_SetCaption("Five Mouse Click", NULL);
-}
+void ChangeName(string txt) { SDL_WM_SetCaption((string("SDL_GUI: ") + txt).c_str(), NULL); }
+void MouseOver() { ChangeName("Mouse Over"); }
+void MouseOut() { ChangeName("Mouse Out"); }
+void MouseDown() { ChangeName("Mouse Down"); }
+void MouseUp() { ChangeName("Mouse Up"); }
+void MouseClick() { ChangeName("Mouse Click"); }
